@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PÁGINA PROYECTO</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <menu></menu>
+
+
+    <p class="tituloprincipalmontaje">CÓDIGOS DE PRUEBA</p>
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Código de prueba del sensor ultrasónico</h1>
+      <p class="textomontaje">Este código lo que hace es comprobar el funcionamiento del sensor ultrasónico y medir distancias enviando un sonido y calculando el tiempo que tarda en volver y luego lo pasa a centímetros (cm).</p>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> Trigger <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">7</span>;   <span style="color: #888888">//Pin digital 2 para el Trigger del sensor</span>
+      <span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> Echo <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">6</span>;   <span style="color: #888888">//Pin digital 3 para el Echo del sensor</span>
+
+      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span>() {
+        Serial.begin(<span style="color: #0000DD; font-weight: bold">9600</span>);<span style="color: #888888">//iniciailzamos la comunicación</span>
+        pinMode(Trigger, OUTPUT); <span style="color: #888888">//pin como salida</span>
+        pinMode(Echo, INPUT);  <span style="color: #888888">//pin como entrada</span>
+        digitalWrite(Trigger, LOW);<span style="color: #888888">//Inicializamos el pin con 0</span>
+
+        <span style="color: #888888">// initialize digital pin LED_BUILTIN as an output.</span>
+        pinMode(LED_BUILTIN, OUTPUT);
+      }
+
+      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">loop</span>()
+      {
+
+        <span style="color: #333399; font-weight: bold">long</span> t; <span style="color: #888888">//timepo que demora en llegar el eco</span>
+        <span style="color: #333399; font-weight: bold">long</span> d; <span style="color: #888888">//distancia en centimetros</span>
+
+        digitalWrite(Trigger, HIGH);
+        delayMicroseconds(<span style="color: #0000DD; font-weight: bold">10</span>);          <span style="color: #888888">//Enviamos un pulso de 10us</span>
+        digitalWrite(Trigger, LOW);
+
+        t <span style="color: #333333">=</span> pulseIn(Echo, HIGH); <span style="color: #888888">//obtenemos el ancho del pulso</span>
+        d <span style="color: #333333">=</span> t<span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">59</span>;             <span style="color: #888888">//escalamos el tiempo a una distancia en cm</span>
+
+        Serial.print(<span style="background-color: #fff0f0">&quot;Distancia: &quot;</span>);
+        Serial.print(d);      <span style="color: #888888">//Enviamos serialmente el valor de la distancia</span>
+        Serial.print(<span style="background-color: #fff0f0">&quot;cm&quot;</span>);
+        Serial.println();
+        delay(<span style="color: #0000DD; font-weight: bold">100</span>);          <span style="color: #888888">//Hacemos una pausa de 100ms</span>
+
+
+        digitalWrite(LED_BUILTIN, HIGH);   <span style="color: #888888">// turn the LED on</span>
+        delay(<span style="color: #0000DD; font-weight: bold">100</span>);                       <span style="color: #888888">// wait for half a second</span>
+        digitalWrite(LED_BUILTIN, LOW);    <span style="color: #888888">// turn the LED off</span>
+        delay(<span style="color: #0000DD; font-weight: bold">100</span>);                       <span style="color: #888888">// wait for half a second</span>
+      }
+      </pre></div>
+
+    </div>
+
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Código de prueba del sensor de luz</h1>
+      <p class="textomontaje">Este código lo que hace es comprobar el funcionamiento del sensor de luz devolviendo un 1 si detecta negro y un 0 si detecta blanco.</p>
+      <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> lectura<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>;
+      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span> () {
+      Serial.begin(<span style="color: #0000DD; font-weight: bold">9600</span>);
+      pinMode (lectura,INPUT);
+      }
+
+      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">loop</span>() {
+         lectura<span style="color: #333333">=</span>digitalRead(<span style="color: #0000DD; font-weight: bold">8</span>);
+         Serial.println(lectura);
+         delay(<span style="color: #0000DD; font-weight: bold">200</span>);
+       }
+      </pre></div>
+
+    </div>
+
+
+
+
+
+    <footer></footer>
+
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+</html>

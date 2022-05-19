@@ -117,6 +117,11 @@ menu {
   margin-bottom: 100px; */
 }
 
+.descripcion {
+  text-align: justify;
+  font-size: 20px;
+}
+
 #columnascontenttitulo {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -316,6 +321,7 @@ menu {
 
 .textomontaje {
   font-size: 30px;
+  text-align: justify;
 }
 
 .titulomontaje {
