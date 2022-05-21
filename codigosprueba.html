@@ -14,45 +14,49 @@
     <div class="posicionamientomontaje">
       <h1 class="titulomontaje">Código de prueba del sensor ultrasónico</h1>
       <p class="textomontaje">Este código lo que hace es comprobar el funcionamiento del sensor ultrasónico y medir distancias enviando un sonido y calculando el tiempo que tarda en volver y luego lo pasa a centímetros (cm).</p>
-      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> Trigger <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">7</span>;   <span style="color: #888888">//Pin digital 2 para el Trigger del sensor</span>
-      <span style="color: #008800; font-weight: bold">const</span> <span style="color: #333399; font-weight: bold">int</span> Echo <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">6</span>;   <span style="color: #888888">//Pin digital 3 para el Echo del sensor</span>
 
-      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span>() {
-        Serial.begin(<span style="color: #0000DD; font-weight: bold">9600</span>);<span style="color: #888888">//iniciailzamos la comunicación</span>
-        pinMode(Trigger, OUTPUT); <span style="color: #888888">//pin como salida</span>
-        pinMode(Echo, INPUT);  <span style="color: #888888">//pin como entrada</span>
-        digitalWrite(Trigger, LOW);<span style="color: #888888">//Inicializamos el pin con 0</span>
+      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">Trigger</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">7</span><span style="color: #000000; font-weight: bold">;</span>   <span style="color: #8f5902; font-style: italic">//Pin digital 7 para el Trigger del sensor</span>
+            <span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">Echo</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">6</span><span style="color: #000000; font-weight: bold">;</span>   <span style="color: #8f5902; font-style: italic">//Pin digital 6 para el Echo del sensor</span>
 
-        <span style="color: #888888">// initialize digital pin LED_BUILTIN as an output.</span>
-        pinMode(LED_BUILTIN, OUTPUT);
-      }
+            <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+              <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span><span style="color: #8f5902; font-style: italic">//iniciailzamos la comunicación</span>
+              <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Trigger</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">//pin como salida</span>
+              <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Echo</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>  <span style="color: #8f5902; font-style: italic">//pin como entrada</span>
+              <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Trigger</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span><span style="color: #8f5902; font-style: italic">//Inicializamos el pin con 0</span>
 
-      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">loop</span>()
-      {
+              <span style="color: #8f5902; font-style: italic">// initialize digital pin LED_BUILTIN as an output.</span>
+              <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">LED_BUILTIN</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+            <span style="color: #000000; font-weight: bold">}</span>
 
-        <span style="color: #333399; font-weight: bold">long</span> t; <span style="color: #888888">//timepo que demora en llegar el eco</span>
-        <span style="color: #333399; font-weight: bold">long</span> d; <span style="color: #888888">//distancia en centimetros</span>
+            <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span>
+            <span style="color: #000000; font-weight: bold">{</span>
 
-        digitalWrite(Trigger, HIGH);
-        delayMicroseconds(<span style="color: #0000DD; font-weight: bold">10</span>);          <span style="color: #888888">//Enviamos un pulso de 10us</span>
-        digitalWrite(Trigger, LOW);
+              <span style="color: #204a87; font-weight: bold">long</span> <span style="color: #000000">t</span><span style="color: #000000; font-weight: bold">;</span> <span style="color: #8f5902; font-style: italic">//timepo que demora en llegar el eco</span>
+              <span style="color: #204a87; font-weight: bold">long</span> <span style="color: #000000">d</span><span style="color: #000000; font-weight: bold">;</span> <span style="color: #8f5902; font-style: italic">//distancia en centimetros</span>
 
-        t <span style="color: #333333">=</span> pulseIn(Echo, HIGH); <span style="color: #888888">//obtenemos el ancho del pulso</span>
-        d <span style="color: #333333">=</span> t<span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">59</span>;             <span style="color: #888888">//escalamos el tiempo a una distancia en cm</span>
+              <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Trigger</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+              <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>          <span style="color: #8f5902; font-style: italic">//Enviamos un pulso de 10us</span>
+              <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Trigger</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
 
-        Serial.print(<span style="background-color: #fff0f0">&quot;Distancia: &quot;</span>);
-        Serial.print(d);      <span style="color: #888888">//Enviamos serialmente el valor de la distancia</span>
-        Serial.print(<span style="background-color: #fff0f0">&quot;cm&quot;</span>);
-        Serial.println();
-        delay(<span style="color: #0000DD; font-weight: bold">100</span>);          <span style="color: #888888">//Hacemos una pausa de 100ms</span>
+              <span style="color: #000000">t</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">pulseIn</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">Echo</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">//obtenemos el ancho del pulso</span>
+              <span style="color: #000000">d</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #000000">t</span><span style="color: #ce5c00; font-weight: bold">/</span><span style="color: #0000cf; font-weight: bold">59</span><span style="color: #000000; font-weight: bold">;</span>             <span style="color: #8f5902; font-style: italic">//escalamos el tiempo a una distancia en cm</span>
+
+              <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">print</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;Distancia: &quot;</span><span style="color: #000000; font-weight: bold">);</span>
+              <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">print</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">d</span><span style="color: #000000; font-weight: bold">);</span>      <span style="color: #8f5902; font-style: italic">//Enviamos serialmente el valor de la distancia</span>
+              <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">print</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;cm&quot;</span><span style="color: #000000; font-weight: bold">);</span>
+              <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">();</span>
+              <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>          <span style="color: #8f5902; font-style: italic">//Hacemos una pausa de 100ms</span>
 
 
-        digitalWrite(LED_BUILTIN, HIGH);   <span style="color: #888888">// turn the LED on</span>
-        delay(<span style="color: #0000DD; font-weight: bold">100</span>);                       <span style="color: #888888">// wait for half a second</span>
-        digitalWrite(LED_BUILTIN, LOW);    <span style="color: #888888">// turn the LED off</span>
-        delay(<span style="color: #0000DD; font-weight: bold">100</span>);                       <span style="color: #888888">// wait for half a second</span>
-      }
+              <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">LED_BUILTIN</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>   <span style="color: #8f5902; font-style: italic">// turn the LED on</span>
+              <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>                       <span style="color: #8f5902; font-style: italic">// wait for half a second</span>
+              <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">LED_BUILTIN</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>    <span style="color: #8f5902; font-style: italic">// turn the LED off</span>
+              <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>                       <span style="color: #8f5902; font-style: italic">// wait for half a second</span>
+            <span style="color: #000000; font-weight: bold">}</span>
       </pre></div>
+
+
+
 
     </div>
 
@@ -60,18 +64,82 @@
     <div class="posicionamientomontaje">
       <h1 class="titulomontaje">Código de prueba del sensor de luz</h1>
       <p class="textomontaje">Este código lo que hace es comprobar el funcionamiento del sensor de luz devolviendo un 1 si detecta negro y un 0 si detecta blanco.</p>
-      <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">int</span> lectura<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>;
-      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">setup</span> () {
-      Serial.begin(<span style="color: #0000DD; font-weight: bold">9600</span>);
-      pinMode (lectura,INPUT);
-      }
 
-      <span style="color: #333399; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">loop</span>() {
-         lectura<span style="color: #333333">=</span>digitalRead(<span style="color: #0000DD; font-weight: bold">8</span>);
-         Serial.println(lectura);
-         delay(<span style="color: #0000DD; font-weight: bold">200</span>);
-       }
+      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">lectura</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span> <span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+<span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">lectura</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+   <span style="color: #000000">lectura</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">digitalRead</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">4</span><span style="color: #000000; font-weight: bold">);</span>
+   <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">lectura</span><span style="color: #000000; font-weight: bold">);</span>
+   <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
+ <span style="color: #000000; font-weight: bold">}</span>
+</pre></div>
+
+
+
+    </div>
+
+
+
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Giro del Servo</h1>
+      <p class="textomontaje">El siguiente código es el que nos ha permitido hacer que gire el Servo.</p>
+
+
+      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #8f5902; font-style: italic">// Declaramos la variable para controlar el servo</span>
+
+      <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+      <span style="color: #8f5902; font-style: italic">// Iniciamos el monitor serie para mostrar el resultado</span>
+      <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span>
+
+      <span style="color: #8f5902; font-style: italic">// Iniciamos el servo para que empiece a trabajar con el pin 3</span>
+      <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">attach</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">3</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #000000; font-weight: bold">}</span>
+
+      <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+      <span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 0º</span>
+      <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #8f5902; font-style: italic">// Esperamos 1 segundo</span>
+      <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">1000</span><span style="color: #000000; font-weight: bold">);</span>
+
+      <span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 90º</span>
+      <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">90</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #8f5902; font-style: italic">// Esperamos 1 segundo</span>
+      <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">1000</span><span style="color: #000000; font-weight: bold">);</span>
+
+      <span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 180º</span>
+      <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">180</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #8f5902; font-style: italic">// Esperamos 1 segundo</span>
+      <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">1000</span><span style="color: #000000; font-weight: bold">);</span>
+      <span style="color: #000000; font-weight: bold">}</span>
       </pre></div>
+
+    </div>
+
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Motores</h1>
+      <p class="textomontaje">Con este código lo que hemos conseguido es hacer que giren tanto los motores de un lado como del otro.</p>
+      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">motorizquierdadelante</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">11</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">motorderechadelante</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">13</span><span style="color: #000000; font-weight: bold">;</span>
+
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">motorizquierdadelante</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">motorderechadelante</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+
+  <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span>
+
+<span style="color: #000000; font-weight: bold">}</span>
+
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+    <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">motorizquierdadelante</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">motorderechadelante</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+</pre></div>
 
     </div>
 
