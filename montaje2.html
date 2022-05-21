@@ -44,17 +44,79 @@
 
       <p class="tituloprincipalmontaje">SERVO</p>
       <div class="posicionamientomontaje">
-        <p class="textomontaje"></p>
-        <p class="textomontaje"></p>
+        <p class="textomontaje">Al necesitar un voltaje mayor esta pieza, hemos juntado varios cables para separar los cables que salen juntos del servo y así poder conectarlos como queremos.</p>
         <div class="posicionimagencentro">
-          <img class="imgmontaje"src="images/cableado/2.png" alt="">
+          <img class="imgmontaje"src="images/cableado/4.png" alt="">
         </div>
-        <p class="textomontaje">El Trigger y el Echo van a ir a los pins con número de la placa Arduino Shield v5.0. En nuestro caso el Trigger va al pin 7 (cable naranja) y el Echo va al 6 (cable verde).</p>
-        <p class="textomontaje">Después tenemos el GND y el voltaje que irán como su propio nombre indica, a los pins de GND y voltaje de la placa Arduino Sensor Shield v5.0 respectivamente.</p>
+        <p class="textomontaje">Una vez tenemos separados los cables conectamos el de voltaje al pin que ofrece 5V de salida.</p>
+        <p class="textomontaje">Después conectamos el pin a un pin de la Arduino Sensor Shield v5.0, en nuestro caso el cable blanco al pin número 3. El otro cable lo conectamos a un pin de GND.</p>
         <div class="posicionimagencentro">
-          <img class="imgmontaje"src="images/cableado/3.png" alt="">
+          <img class="imgmontaje"src="images/cableado/5.png" alt="">
         </div>
       </div>
+
+      <p class="tituloprincipalmontaje">ARDUINO SENSOR SHIELD V5.0</p>
+      <div class="posicionamientomontaje">
+        <p class="textomontaje">Esta pieza la podríamos dividir en 3 partes donde vamos a conectar los cables: </p>
+        <p class="textomontaje"> - El pin de 5V donde vamos a conectar el motor Servo para alimentarlo y hacer que gire. (Número 1 en la imagen)</p>
+        <p class="textomontaje"> - Las regletas que tienen un tornillo donde vamos a tener que introducir el voltaje y el GND que van a alimentar la placa. Estos cables vendrán de las regletas azules de voltaje y GND de la placa L298N. (Número 2 en la imagen)</p>
+        <p class="textomontaje"> - Los pines digitales que será dónde conectaremos los cables para controlar motores, sensores y todos los demás componentes del coche. (Número 3 en la imagen)</p>
+        <div class="posicionimagencentro">
+          <img class="imgmontaje" src="images/cableado/6.png" alt="">
+        </div>
+      </div>
+
+      <p class="tituloprincipalmontaje">SENSORES DE LUZ</p>
+      <div class="posicionamientomontaje">
+        <p class="textomontaje">Cada una de estas piezas tienen tres pines, que son los siguientes:</p>
+        <p class="textomontaje"> - VCC (Voltaje)</p>
+        <p class="textomontaje"> - GND (Ground)</p>
+        <p class="textomontaje"> - OUT (Output)</p>
+        <p class="textomontaje">Conectaremos un cable a cada pin. Cada uno de estos cables irá conectado al módulo de 4 vías.</p>
+        <div class="posicionimagencentro">
+          <img class="imgmontaje" src="images/cableado/7.png" alt="">
+        </div>
+      </div>
+
+      <p class="tituloprincipalmontaje">MÓDULO DE 4 VÍAS</p>
+      <div class="posicionamientomontaje">
+        <p class="textomontaje">Esta pieza la podríamos dividir en varias partes también, dos donde conectaremos los cables y otra donde ajustaremos la potencia de los sensores.</p>
+        <p class="textomontaje">Una parte de esta pieza (parte de la izquierda) será donde conectaremos los sensores de luz. Esta parte se divide en cuatro partes, una por sensor. Cada una de ellas se compondrá del VCC, el GND y el IN. Juntaremos el voltaje del módulo de cuatro vías con el del sensor, lo mismo con el GND y por último juntaremos el OUT del sensor de luz con el IN del módulo de cuatro vías. Repetimos este paso con cada uno de los cuatro sensores. (Número 1 en la imagen)</p>
+        <p class="textomontaje">Por cada uno de los sensores que conectemos al módulo de 4 vías, dispondremos en esta placa de un potenciómetro. Esta pieza nos va a permitir ajustar, como su nombre indica, la potencia que le vamos a dar a cada sensor y poder mejorar su precisión para recibir luego el valor esperado. Se ajusta moviendo hacia la derecha o hacia la izquierda hasta que recibamos el valor esperado. (Número 2 en la imagen)</p>
+        <p class="textomontaje">Por último, en la parte derecha de la pieza tendremos 6 pines:</p>
+        <p class="textomontaje"> - Un VCC, que irá conectado a uno de los pines digitales de voltaje de la placa Arduino Sensor Shield v5.0.</p>
+        <p class="textomontaje"> - Un GND, que al igual que el VCC irá conectado a uno de los pines digitales de GND de la Arduino Sensor Shield v5.0.</p>
+        <p class="textomontaje"> - Cuatro Outputs, que irán conectados a cualquiera de los pines digitales numerados de la placa Arduino Sensor Shield v5.0. (Número 3 en la imagen)</p>
+        <div class="posicionimagencentro">
+          <img class="imgmontaje" src="images/cableado/8.png" alt="">
+        </div>
+      </div>
+
+      <p class="tituloprincipalmontaje">L298N</p>
+      <div class="posicionamientomontaje">
+        <p class="textomontaje">Como hemos dicho antes, esta pieza es la que se encargará de dar voltaje a los motores.</p>
+        <p class="textomontaje">Se divide en 3 partes:</p>
+        <p class="textomontaje"> - 2 regletas azules con 2 puertos cada una para conectar los cuatro motores y darles voltaje.</p>
+        <p class="textomontaje"> - 3 regletas donde se conectará la batería y la placa Arduino Sensor Shield v5.0.</p>
+        <p class="textomontaje"> - 6 pines para conectar los motores.</p>
+        <div class="posicionimagencentro">
+          <img class="imgmontaje" src="images/cableado/9.png" alt="">
+        </div>
+        <p class="textomontaje">Las regletas azules donde se conectan los motores están en 2 lados, uno para los motores de la derecha y el otro para los motores de la izquierda. Habrá que conectar en uno de ellos los cables positivos de los dos motores de un lado y en el otro los cables negativos de esos mismos motores. Repetimos este paso en las otras dos regletas con los cables de los motores del otro lado.</p>
+        <p class="textomontaje">Las tres regletas de abajo de la imagen tienen cada uno de ellos la siguiente función:</p>
+        <p class="textomontaje"> - El de la izquierda tiene un voltaje de 12V y aquí conectaremos el cable rojo de la batería para alimentar a los cuatro motores y así hacer que tengan la potencia necesaria para hacer girar los motores.</p>
+        <p class="textomontaje"> - El del medio es el GND. Aquí irá conectado el cable negro de la batería y el GND de la placa Arduino Sensor Shield v5.0.</p>
+        <p class="textomontaje"> - El de la derecha ofrecerá un voltaje de 5V, que es el que servirá para alimentar.</p>
+        <p class="textomontaje">Por último tenemos los seis pines que nos permitirán controlar los motores a través del código. Los dos pines de los extremos servirán para regular la velocidad que les daremos a los motores y los cuatro pines del medio los conectaremos a uno de los pines digitales numerados de la placa Arduino Sensor Shield v5.0.</p>
+      </div>
+
+      <p class="tituloprincipalmontaje">BATERÍA</p>
+      <div class="posicionamientomontaje">
+        <p class="textomontaje">La batería estará alimentada por dos pilas 18650 de 3.7V cada una de ellas. Las pilas alimentarán a la placa L298N que a su vez alimentará a la placa base y al resto de componentes del coche.</p>
+        <p class="textomontaje">La batería tiene dos cables que salen de ella, uno rojo y uno negro. El cable rojo irá conectado a la regleta azul de la placa L298N de 12V y el negro es el GND, por lo que irá conectado a la regleta de GND.</p>
+        <p class="textomontaje">La regleta donde se conectarán tanto el cable rojo como el cable negro será la que tiene 3 puertos. El cable rojo irá al de la izquierda (12V) y el cable negro al del medio (GND).</p>
+      </div>
+
 
 
     </estructuramontaje>
