@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PÁGINA PROYECTO</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <menu></menu>
+
+    <p class="tituloprincipalmontaje">MANUAL DE USUARIO</p>
+    <div class="posicionamientomontaje">
+      <p class="textomontaje">En este apartado vamos a ver cómo se utiliza el coche que hemos hecho.</p>
+      <p class="textomontaje">En este manual vamos a explicar los pasos a partir de una vez que ya tenemos montado el coche, tanto la estructura como el cableado de los motores y sensores.</p>
+      <p class="textomontaje">Básicamente lo que vamos a ver en este manual es cómo cargar el código desde el programa en el coche.</p>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Paso 1</h1>
+      <p class="textomontaje">El primer paso que vamos a hacer es conectar el coche al ordenador. Para ello cogemos el cable USB de tipo C y lo conectamos a la ranura para este tipo de puertos de la placa ATMEGA328 y a un puerto USB del ordenador.</p>
+      <p class="textomontaje">Cuando el coche esté conecado deberían iluminarse los componentes del coche, indicándonos que se ha conectado correctamente.</p>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Paso 2</h1>
+      <p class="textomontaje">Ahora lo que vamos a hacer es abrir el programa Arduino IDE. Si no disponemos de este programa en nuestro ordenador lo podremos descargar en <a href="https://www.arduino.cc/en/software">este enlace</a>. Habrá que indicar el sistema operativo de nuestro ordenador antes de descargarlo.</p>
+      <p class="textomontaje">El logo del programa es este:</p>
+      <div class="posicionimagencentro">
+        <img class="imgmontaje"src="images/manual/2.png" alt="">
+      </div>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Interfaz del programa</h1>
+      <p class="textomontaje">Esta es la interfaz del programa Arduino IDE. Ahora vamos a ir por partes para ver para qué sirve cada cosa, cómo se sube el código al coche y todo lo que hay que hacer para ello.</p>
+      <div class="posicionimagencentro">
+        <img class="imgmontaje"src="images/manual/3" alt="">
+      </div>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Paso 3: Área de texto para introducir el código</h1>
+      <p class="textomontaje">El área blanca es donde tendremos que meter el código. Aquí declararemos los pines que número tienen, indicaremos si los sensores y motores son INPUTS o OUTPUTS y el loop, que es el código que se repetirá en función del código que hemos introducido.</p>
+      <div class="posicionimagencentro">
+        <img class="imgmontaje" src="images/manual/texto.png" alt="">
+      </div>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Paso 4: Verificar el código</h1>
+      <p class="textomontaje">Este es uno de los pasos más importantes, ya que nos dirá si hay algún error en nuestro código y si lo hay nos indicará la línea dónde está. Los errores más frecuentes son dejarnos algún punto y coma ';' al final de una línea, un corchete mal cerrado o alguna variables mal declarada.</p>
+      <p class="textomontaje">El botón de verificar es el primer botón de la barra de arriba.</p>
+      <div class="posicionimagencentro">
+        <img class="imgmontaje" src="images/manual/verificar.png" alt="">
+      </div>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Paso 5: Subir el código</h1>
+      <p class="textomontaje">En este paso lo que vamos a hacer es poner el código que hemos programado en el programa Arduino IDE al coche.</p>
+      <p class="textomontaje">Subir el código es muy sencillo, únicamente hay que darle al botón subir, que es el segundo de la barra de arriba.</p>
+      <div class="posicionimagencentro">
+        <img class="imgmontaje" src="images/manual/subir.png" alt="">
+      </div>
+    </div>
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Paso 6: Encender el coche</h1>
+      <p class="textomontaje">Finalmente, una vez ya hemos subido el código al coche únicamente nos quedará encender el coche.</p>
+      <p class="textomontaje">Antes de encender el coche hay que desconectar el cable USB tipo C de la placa ATMEGA328.</p>
+      <p class="textomontaje">Para encender el coche bastará con poner la batería del coche en modo ON.</p>
+    </div>
+
+
+
+    <footer></footer>
+
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+</html>
