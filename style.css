@@ -351,3 +351,28 @@ menu {
   height: 2000px;
   weight: 1000px;
 }
+
+@media (max-width: 1024px) {
+  body {
+    background-color: white;
+  }
+
+  #columnascontenttitulo {
+    grid-template-columns: 1fr;
+}
+
+.columnasfasesmontaje {
+  grid-template-columns: 1fr;
+}
+
+.columnascodigo {
+  grid-template-columns: 1fr;
+}
+
+.columnasfooter {
+  grid-template-columns: 1fr;
+}
+
+.columnasfotos {
+  grid-template-columns: 1fr;
+}
