@@ -352,6 +352,10 @@ menu {
   weight: 1000px;
 }
 
+.centrarvideo {
+  text-align: center;
+}
+
 @media (max-width: 1024px) {
   body {
     background-color: white;
