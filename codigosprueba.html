@@ -61,26 +61,26 @@
     </div>
 
 
-    <div class="posicionamientomontaje">
+    <!-- <div class="posicionamientomontaje">
       <h1 class="titulomontaje">Código de prueba del sensor de luz</h1>
       <p class="textomontaje">Este código lo que hace es comprobar el funcionamiento del sensor de luz devolviendo un 1 si detecta negro y un 0 si detecta blanco.</p>
 
-      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">lectura</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">;</span>
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span> <span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
-<span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">lectura</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
+      <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">lectura</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">;</span>
+          <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span> <span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+          <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span>
+          <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">lectura</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>
+          <span style="color: #000000; font-weight: bold">}</span>
 
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
-   <span style="color: #000000">lectura</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">digitalRead</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">4</span><span style="color: #000000; font-weight: bold">);</span>
-   <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">lectura</span><span style="color: #000000; font-weight: bold">);</span>
-   <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
- <span style="color: #000000; font-weight: bold">}</span>
-</pre></div>
+          <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
+             <span style="color: #000000">lectura</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">digitalRead</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">4</span><span style="color: #000000; font-weight: bold">);</span>
+             <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">lectura</span><span style="color: #000000; font-weight: bold">);</span>
+             <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
+           <span style="color: #000000; font-weight: bold">}</span>
+          </pre></div>
 
 
 
-    </div>
+    </div> -->
 
 
 
@@ -138,6 +138,326 @@
 <span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
     <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">motorizquierdadelante</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>
     <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">motorderechadelante</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #0000cf; font-weight: bold">100</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+</pre></div>
+
+    </div>
+
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Código de giro hacia la izquierda</h1>
+      <p class="textomontaje">Con este código el coche cuando detecta un obstáculo a 50 centímetros girará hacia la izquierda para evitarlo.</p>
+      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DETRAS_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">13</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 13 para controlar sentido giro motor izquierdo</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DELANTE_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">12</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 12 para controlar sentido giro motor izquierdo</span>
+
+<span style="color: #8f5902; font-style: italic">// Definición de variables y constantes relacionadas con el motor derecho</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">11</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 11 para controlar sentido giro motor izquierdo</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 10 para controlar sentido giro motor izquierdo</span>
+
+<span style="color: #8f5902; font-style: italic">// Este programa usará el sensor de ultrasonidos HCSR04 </span>
+<span style="color: #8f5902; font-style: italic">// para medir la distancia a la que se encuentran</span>
+<span style="color: #8f5902; font-style: italic">// diferentes obstáculos en centímetros y mostrarlo por el puerto serie.</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_TRIGGER</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">7</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_ECHO</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">6</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">CENTIMETROS</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">50</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">long</span> <span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Almacena el tiempo de respuesta del sensor de entrada</span>
+<span style="color: #204a87; font-weight: bold">float</span> <span style="color: #000000">DISTANCIA</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Almacena la distancia en cm a la que se encuentra el objeto</span>
+
+<span style="color: #8f5902; font-style: italic">// Función que se ejecuta una sola vez al cargar el programa</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Se declaran todos los pines como salidas</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+
+  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// El emisor emite por lo que es configurado como salida</span>
+  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>   <span style="color: #8f5902; font-style: italic">// El receptor recibe por lo que es configurado como entrada</span>
+  <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// Inicia el puerto de comunicaciones en serie</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">// Función que se repite de manera periódica</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #000000">SENSOR_ULTRASONICO</span><span style="color: #000000; font-weight: bold">();</span>
+  <span style="color: #8f5902; font-style: italic">// Si el valor de la distancia es menor que 5 cm se para y sigue recto en caso contrario</span>
+  <span style="color: #204a87; font-weight: bold">if</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA</span><span style="color: #ce5c00; font-weight: bold">&gt;</span><span style="color: #000000">CENTIMETROS</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">{</span>
+
+    <span style="color: #000000">ROBOT_DELANTE</span><span style="color: #000000; font-weight: bold">();</span>
+  <span style="color: #000000; font-weight: bold">}</span>
+  <span style="color: #204a87; font-weight: bold">else</span>
+  <span style="color: #000000; font-weight: bold">{</span>
+    <span style="color: #000000">ROBOT_DERECHA</span> <span style="color: #000000; font-weight: bold">();</span>
+  <span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">/*</span>
+<span style="color: #8f5902; font-style: italic"> Función SENSOR_ULTRASONICO: para medir la longitud del pulso entrante. </span>
+<span style="color: #8f5902; font-style: italic"> Mide el tiempo que transcurrido entre el envío del pulso ultrasónico </span>
+<span style="color: #8f5902; font-style: italic"> y cuando el sensor recibe el rebote, </span>
+<span style="color: #8f5902; font-style: italic"> es decir: desde que el pin echo empieza a recibir el rebote, HIGH, </span>
+<span style="color: #8f5902; font-style: italic"> hasta que deja de hacerlo, LOW, la longitud del pulso entrante.</span>
+<span style="color: #8f5902; font-style: italic">*/</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">SENSOR_ULTRASONICO</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+    <span style="color: #8f5902; font-style: italic">// Se inicializa el sensor de infrasonidos</span>
+    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>  <span style="color: #8f5902; font-style: italic">// Para estabilizar</span>
+    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
+
+    <span style="color: #8f5902; font-style: italic">// Comenzamos las mediciones</span>
+    <span style="color: #8f5902; font-style: italic">// Se envía una señal activando la salida trigger durante 10 microsegundos</span>
+    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>  <span style="color: #8f5902; font-style: italic">// envío del pulso ultrasónico</span>
+    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">TIEMPO</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">pulseIn</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">DISTANCIA</span><span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #204a87; font-weight: bold">int</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0.017</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// Fórmula para calcular la distancia en cm</span>
+    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;El valor de la distancia es &quot;</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">/*</span>
+<span style="color: #8f5902; font-style: italic">  Función ROBOT_DELANTE: esta función hará que ambos motores se activen a máxima potencia</span>
+<span style="color: #8f5902; font-style: italic">  por lo que el robot avanzará hacia delante</span>
+<span style="color: #8f5902; font-style: italic">*/</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_DELANTE</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motor izquierdo</span>
+  <span style="color: #8f5902; font-style: italic">// Al mantener un pin HIGH y el otro LOW el motor gira en un sentido</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motor derecho</span>
+  <span style="color: #8f5902; font-style: italic">// Al mantener un pin HIGH y el otro LOW el motor gira en un sentido</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">/*</span>
+<span style="color: #8f5902; font-style: italic">  Función ROBOT_ATRAS: esta función hará que ambos motores se activen a máxima potencia </span>
+<span style="color: #8f5902; font-style: italic">  en sentido contrario al anterior por lo que el robot avanzará hacia atrás</span>
+<span style="color: #8f5902; font-style: italic">*/</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_ATRAS</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motor izquierdo</span>
+  <span style="color: #8f5902; font-style: italic">// Al mantener un pin LOW y el otro HIGH el motor gira en sentido contrario al anterior</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motor derecho</span>
+  <span style="color: #8f5902; font-style: italic">// Al mantener un pin LOW y el otro HIGH el motor gira en sentido contrario al anterior</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">/*</span>
+<span style="color: #8f5902; font-style: italic">  Función ROBOT_DERECHA: esta función acccionará el motor izquierdo y parará el derecho</span>
+<span style="color: #8f5902; font-style: italic">  por lo que el coche girará hacia la derecha (sentido horario)</span>
+<span style="color: #8f5902; font-style: italic">*/</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_DERECHA</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">//  Motor izquierdo</span>
+  <span style="color: #8f5902; font-style: italic">// Se activa el motor izquierdo</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motor derecho</span>
+  <span style="color: #8f5902; font-style: italic">// Se para el motor derecho</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">/*</span>
+<span style="color: #8f5902; font-style: italic">  Función ROBOT_IZQUIERDA: esta función acccionará el motor derecho y parará el izquierdo</span>
+<span style="color: #8f5902; font-style: italic">  por lo que el coche girará hacia la izquierda (sentido antihorario)</span>
+<span style="color: #8f5902; font-style: italic">*/</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_IZQUIERDA</span> <span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+   <span style="color: #8f5902; font-style: italic">//  Motor izquierdo</span>
+  <span style="color: #8f5902; font-style: italic">// Se para el motor izquierdo</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motor derecho</span>
+  <span style="color: #8f5902; font-style: italic">// Se activa el motor derecho</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #8f5902; font-style: italic">/*</span>
+<span style="color: #8f5902; font-style: italic">  Función ROBOT_QUIETO: esta función parará ambos motores</span>
+<span style="color: #8f5902; font-style: italic">  por lo que el robot se parará.</span>
+<span style="color: #8f5902; font-style: italic">*/</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motor izquierdo</span>
+  <span style="color: #8f5902; font-style: italic">// Se para el motor izquierdo</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motor derecho</span>
+  <span style="color: #8f5902; font-style: italic">// Se para el motor derecho</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+</pre></div>
+
+    </div>
+
+
+
+
+
+    <div class="posicionamientomontaje">
+      <h1 class="titulomontaje">Código de giro hacia la derecha o izquierda dependiendo de si el obstáculo que detecta está a una distancia par o impar</h1>
+      <p class="textomontaje">Este código lo que hace es que el coche avance hacia delante y cuando detecte un objeto se parará y girará hacia un lado o hacia otro dependiendo de si el objeto que detecte está a una distancia par (girará hacia la derecha) o impar (girará hacia la izquierda).</p>
+      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #8f5902; font-style: italic">// Variables de los motores</span>
+
+<span style="color: #8f5902; font-style: italic">// Motores de la izquierda</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 10 que hace que las ruedas de la izquierda avancen hacia delante</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">11</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 11 que hace que las ruedas de la izquierda avancen hacia atrás</span>
+
+<span style="color: #8f5902; font-style: italic">// Motores de la derecha</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DELANTE_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">12</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 12 que hace que las ruedas de la derecha avancen hacia delante</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DETRAS_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">13</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 13 que hace que las ruedas de la derecha avancen hacia atrás</span>
+
+
+<span style="color: #8f5902; font-style: italic">// Variables del sensor ultrasónico (HC-SR04)</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_TRIGGER</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">7</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_ECHO</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">6</span><span style="color: #000000; font-weight: bold">;</span>
+<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">CENTIMETROS</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">50</span><span style="color: #000000; font-weight: bold">;</span> <span style="color: #8f5902; font-style: italic">// Son los centímetros a los que queremos que gire el coche</span>
+<span style="color: #204a87; font-weight: bold">long</span> <span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Variable que guarda el tiempo</span>
+<span style="color: #204a87; font-weight: bold">float</span> <span style="color: #000000">DISTANCIA</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Variable que guarda la distancia</span>
+
+
+
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+<span style="color: #8f5902; font-style: italic">// Se declaran los motores como OUTPUT</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+
+<span style="color: #8f5902; font-style: italic">// Se declara como OUTPUT el TRIGGER y como INPUT el ECHO.</span>
+  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// Se inicia el puerto de comunicaciones</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+
+
+<span style="color: #8f5902; font-style: italic">// Código que se repite en bucle</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #000000">SENSOR_ULTRASONICO</span><span style="color: #000000; font-weight: bold">();</span>
+  <span style="color: #8f5902; font-style: italic">// Si la distancia es mayor que los centímetros avanzará</span>
+  <span style="color: #204a87; font-weight: bold">if</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA</span><span style="color: #ce5c00; font-weight: bold">&gt;</span><span style="color: #000000">CENTIMETROS</span><span style="color: #000000; font-weight: bold">)</span>
+  <span style="color: #000000; font-weight: bold">{</span>
+    <span style="color: #000000">ROBOT_DELANTE</span><span style="color: #000000; font-weight: bold">();</span>
+  <span style="color: #000000; font-weight: bold">}</span>
+  <span style="color: #204a87; font-weight: bold">else</span>
+  <span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Si los centímetros son mayores que la distancia el coche se parará y girará hacia la derecha o hacia la izquierda</span>
+    <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">();</span>
+    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">ROBOT_ATRAS</span><span style="color: #000000; font-weight: bold">();</span>
+    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">();</span>
+    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
+
+    <span style="color: #204a87; font-weight: bold">if</span> <span style="color: #000000; font-weight: bold">((</span><span style="color: #204a87; font-weight: bold">int</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000">DISTANCIA</span> <span style="color: #ce5c00; font-weight: bold">%</span> <span style="color: #0000cf; font-weight: bold">2</span> <span style="color: #ce5c00; font-weight: bold">==</span> <span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">{</span>
+      <span style="color: #000000">ROBOT_DERECHA</span> <span style="color: #000000; font-weight: bold">();</span>
+    <span style="color: #000000; font-weight: bold">}</span> <span style="color: #204a87; font-weight: bold">else</span> <span style="color: #000000; font-weight: bold">{</span>
+      <span style="color: #000000">ROBOT_IZQUIERDA</span><span style="color: #000000; font-weight: bold">();</span>
+    <span style="color: #000000; font-weight: bold">}</span>
+    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
+
+  <span style="color: #000000; font-weight: bold">}</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+
+
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">SENSOR_ULTRASONICO</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// En esta parte del código lo que vamos a hacer es calcular la distancia gracias al sensor ultrasónico.</span>
+  <span style="color: #8f5902; font-style: italic">// Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</span>
+  <span style="color: #8f5902; font-style: italic">// Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</span>
+    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
+
+    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">TIEMPO</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">pulseIn</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">DISTANCIA</span><span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #204a87; font-weight: bold">int</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0.017</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;El valor de la distancia es &quot;</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA</span><span style="color: #000000; font-weight: bold">);</span>
+    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+<span style="color: #8f5902; font-style: italic">// Función que hace que se activen los pines de los motores hacia delante y el coche avance hacia delante.</span>
+
+
+
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_DELANTE</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
+  <span style="color: #8f5902; font-style: italic">// El pin de delante está en HIGH mientras que el de detrás está en LOW, por lo que las dos ruedas de la izquierda girarán hacia delante.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
+  <span style="color: #8f5902; font-style: italic">// El pin de delante está en HIGH mientras que el de detrás está en LOW, por lo que las dos ruedas de la derecha girarán hacia delante.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+
+
+<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es que se activen los pines del coche hacia detrás y el coche avance hacia atrás.</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_ATRAS</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
+  <span style="color: #8f5902; font-style: italic">// El pin de detrás está en HIGH mientras que el de delante está en LOW, por lo que las dos ruedas de la izquierda girarán hacia atrás.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
+  <span style="color: #8f5902; font-style: italic">// El pin de detrás está en HIGH mientras que el de delante está en LOW, por lo que las dos ruedas de la derecha girarán hacia atrás.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+
+
+<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es hacer que únicamente giren las ruedas de la izquierda hacia delante para que así se produzca un giro hacia la derecha.</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_DERECHA</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
+  <span style="color: #8f5902; font-style: italic">// El pin de las ruedas de la izquierda hacia delante está en HIGH, por lo que las ruedas girarán hacia delante y provocarán un giro hacia la derecha.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
+  <span style="color: #8f5902; font-style: italic">// Los dos pines están en LOW, por lo que ninguna de las ruedas se quedarán quietas.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+
+
+<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es hacer que únicamente giren las ruedas de la derecha hacia delante para que así se produzca un giro hacia la izquierda.</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_IZQUIERDA</span> <span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
+  <span style="color: #8f5902; font-style: italic">// Los dos pines están en LOW, por lo que ninguna de las ruedas se quedarán quietas.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
+  <span style="color: #8f5902; font-style: italic">// El pin de las ruedas de la derecha hacia delante está en HIGH, por lo que las ruedas girarán hacia delante y provocarán un giro hacia la izquierda.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+<span style="color: #000000; font-weight: bold">}</span>
+
+
+
+<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es hacer que todas las ruedas se queden quietas poniendo todos los pines en LOW.</span>
+<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">()</span>
+<span style="color: #000000; font-weight: bold">{</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
+  <span style="color: #8f5902; font-style: italic">// Se paran los motores del lado izquierdo.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
+  <span style="color: #8f5902; font-style: italic">// Se paran los motores del lado derecho.</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
+  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
 <span style="color: #000000; font-weight: bold">}</span>
 </pre></div>
 
