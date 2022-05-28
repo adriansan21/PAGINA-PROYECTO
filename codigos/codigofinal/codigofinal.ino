@@ -40,7 +40,7 @@ void setup()
   pinMode(PIN_TRIGGER,OUTPUT);
   pinMode(PIN_ECHO,INPUT);
   Serial.begin(9600); // Se inicia el puerto de comunicaciones
-  servoMotor.attach(PIN_SERVO);
+  servoMotor.attach(PIN_SERVO); // Comprueba que el pin del Servo (pin 3) está bien conectado
 
 }
 
