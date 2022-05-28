@@ -14,244 +14,247 @@
       <p class="textomontaje">Este es el código final que hemos usado en nuestro coche.</p>
       <p class="textomontaje">Lo que hace el coche con este código es avanzar y cuando detecta un objeto a unos 50 centímetros se detiene, retrocede un poco y el servo gira hacia la izquierda y calcula la distancia respecto al obstáculo más cercano en esa dirección. Repite el mismo proceso con la parte derecha. Una vez ya ha calculado la distancia en ambas direcciones, el robot girará hacia el lado donde tenga el obstáculo de cualquiera de las direcciones más lejos y después avanzará recto hasta que se encuente un objeto a 50 centímetros y repetirá todo el proceso anterior.</p>
 
-      <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #8f5902; font-style: italic">// Incluímos la librería para poder controlar el servo</span>
-<span style="color: #8f5902; font-style: italic">#include &lt;Servo.h&gt;</span>
+      <pre>
+      <font color="#434f54">&#47;&#47; Incluímos la librería para poder controlar el servo</font>
+      <font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">Servo</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
 
-<span style="color: #8f5902; font-style: italic">// Declaramos la variable para controlar el servo</span>
-<span style="color: #000000">Servo</span> <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">;</span>
+      <font color="#434f54">&#47;&#47; Declaramos la variable para controlar el servo</font>
+      <b><font color="#d35400">Servo</font></b> <font color="#000000">servoMotor</font><font color="#000000">;</font>
 
-<span style="color: #8f5902; font-style: italic">// Variables de los motores</span>
+      <font color="#434f54">&#47;&#47; Variables de los motores</font>
 
-<span style="color: #8f5902; font-style: italic">// Motores de la izquierda</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 10 que hace que las ruedas de la izquierda avancen hacia delante</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">11</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 11 que hace que las ruedas de la izquierda avancen hacia atrás</span>
+      <font color="#434f54">&#47;&#47; Motores de la izquierda</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">MOTOR_DELANTE_IZQUIERDA</font> <font color="#434f54">=</font> <font color="#000000">10</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Pin digital 10 que hace que las ruedas de la izquierda avancen hacia delante</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">MOTOR_DETRAS_IZQUIERDA</font> <font color="#434f54">=</font> <font color="#000000">11</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Pin digital 11 que hace que las ruedas de la izquierda avancen hacia atrás</font>
 
-<span style="color: #8f5902; font-style: italic">// Motores de la derecha</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DELANTE_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">12</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 12 que hace que las ruedas de la derecha avancen hacia delante</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">MOTOR_DETRAS_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">13</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Pin digital 13 que hace que las ruedas de la derecha avancen hacia atrás</span>
-
-
-<span style="color: #8f5902; font-style: italic">// Variables del sensor ultrasónico (HC-SR04)</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_TRIGGER</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">7</span><span style="color: #000000; font-weight: bold">;</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_ECHO</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">6</span><span style="color: #000000; font-weight: bold">;</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">CENTIMETROS</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">50</span><span style="color: #000000; font-weight: bold">;</span> <span style="color: #8f5902; font-style: italic">// Son los centímetros a los que queremos que gire el coche</span>
-<span style="color: #204a87; font-weight: bold">long</span> <span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Variable que guarda el tiempo</span>
-<span style="color: #204a87; font-weight: bold">float</span> <span style="color: #000000">DISTANCIA</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Variable que guarda la distancia</span>
-<span style="color: #204a87; font-weight: bold">float</span> <span style="color: #000000">DISTANCIA_DERECHA</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Variable que guarda la distancia a la derecha</span>
-<span style="color: #204a87; font-weight: bold">float</span> <span style="color: #000000">DISTANCIA_IZQUIERDA</span><span style="color: #000000; font-weight: bold">;</span>  <span style="color: #8f5902; font-style: italic">// Variable que guarda la distancia a la izquierda</span>
-
-<span style="color: #8f5902; font-style: italic">// Declaramos el pin al que está conectado el servo</span>
-<span style="color: #204a87; font-weight: bold">const</span> <span style="color: #204a87; font-weight: bold">int</span> <span style="color: #000000">PIN_SERVO</span> <span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #0000cf; font-weight: bold">3</span><span style="color: #000000; font-weight: bold">;</span>
+      <font color="#434f54">&#47;&#47; Motores de la derecha</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">MOTOR_DELANTE_DERECHA</font> <font color="#434f54">=</font> <font color="#000000">12</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Pin digital 12 que hace que las ruedas de la derecha avancen hacia delante</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">MOTOR_DETRAS_DERECHA</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Pin digital 13 que hace que las ruedas de la derecha avancen hacia atrás</font>
 
 
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">setup</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-<span style="color: #8f5902; font-style: italic">// Se declaran los motores como OUTPUT</span>
-  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">pinMode</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
+      <font color="#434f54">&#47;&#47; Variables del sensor ultrasónico (HC-SR04)</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">PIN_TRIGGER</font> <font color="#434f54">=</font> <font color="#000000">7</font><font color="#000000">;</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">PIN_ECHO</font> <font color="#434f54">=</font> <font color="#000000">6</font><font color="#000000">;</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">CENTIMETROS</font> <font color="#434f54">=</font> <font color="#000000">50</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Son los centímetros a los que queremos que gire el coche</font>
+      <font color="#00979c">long</font> <font color="#000000">TIEMPO</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Variable que guarda el tiempo</font>
+      <font color="#00979c">float</font> <font color="#000000">DISTANCIA</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Variable que guarda la distancia</font>
+      <font color="#00979c">float</font> <font color="#000000">DISTANCIA_DERECHA</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Variable que guarda la distancia a la derecha</font>
+      <font color="#00979c">float</font> <font color="#000000">DISTANCIA_IZQUIERDA</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Variable que guarda la distancia a la izquierda</font>
 
-<span style="color: #8f5902; font-style: italic">// Se declara como OUTPUT el TRIGGER y como INPUT el ECHO.</span>
-  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// Se inicia el puerto de comunicaciones</span>
-  <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">attach</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_SERVO</span><span style="color: #000000; font-weight: bold">);</span>
-
-<span style="color: #000000; font-weight: bold">}</span>
+      <font color="#434f54">&#47;&#47; Declaramos el pin al que está conectado el servo, en nuestro caso el 3</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">PIN_SERVO</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font>
 
 
+      <font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+      <font color="#434f54">&#47;&#47; Se declaran los motores como OUTPUT</font>
+       &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
 
-<span style="color: #8f5902; font-style: italic">// Código que se repite en bucle</span>
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">loop</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #000000">SENSOR_ULTRASONICO</span><span style="color: #000000; font-weight: bold">();</span>
-  <span style="color: #8f5902; font-style: italic">// Si la distancia es mayor que los centímetros avanzará</span>
-  <span style="color: #204a87; font-weight: bold">if</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA</span><span style="color: #ce5c00; font-weight: bold">&gt;</span><span style="color: #000000">CENTIMETROS</span><span style="color: #000000; font-weight: bold">)</span>
-  <span style="color: #000000; font-weight: bold">{</span>
-    <span style="color: #000000">ROBOT_DELANTE</span><span style="color: #000000; font-weight: bold">();</span>
-  <span style="color: #000000; font-weight: bold">}</span>
-  <span style="color: #204a87; font-weight: bold">else</span>
-  <span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// Si los centímetros son mayores que la distancia el coche se parará y girará hacia la derecha o hacia la izquierda</span>
-    <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">();</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">ROBOT_ATRAS</span><span style="color: #000000; font-weight: bold">();</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">250</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">();</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
+      <font color="#434f54">&#47;&#47; Se declara como OUTPUT el TRIGGER y como INPUT el ECHO.</font>
+       &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font><font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">PIN_ECHO</font><font color="#434f54">,</font><font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Se inicia el puerto de comunicaciones</font>
+       &nbsp;<font color="#000000">servoMotor</font><font color="#434f54">.</font><font color="#d35400">attach</font><font color="#000000">(</font><font color="#000000">PIN_SERVO</font><font color="#000000">)</font><font color="#000000">;</font>
 
-     <span style="color: #000000">GIRAR_SERVO</span><span style="color: #000000; font-weight: bold">();</span>
-
-
-    <span style="color: #204a87; font-weight: bold">if</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA_DERECHA</span> <span style="color: #ce5c00; font-weight: bold">&gt;</span> <span style="color: #000000">DISTANCIA_IZQUIERDA</span><span style="color: #000000; font-weight: bold">)</span> <span style="color: #000000; font-weight: bold">{</span>
-      <span style="color: #000000">ROBOT_DERECHA</span> <span style="color: #000000; font-weight: bold">();</span>
-    <span style="color: #000000; font-weight: bold">}</span> <span style="color: #204a87; font-weight: bold">else</span> <span style="color: #000000; font-weight: bold">{</span>
-      <span style="color: #000000">ROBOT_IZQUIERDA</span><span style="color: #000000; font-weight: bold">();</span>
-    <span style="color: #000000; font-weight: bold">}</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
-
-  <span style="color: #000000; font-weight: bold">}</span>
-<span style="color: #000000; font-weight: bold">}</span>
-
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">GIRAR_SERVO</span><span style="color: #000000; font-weight: bold">()</span> <span style="color: #000000; font-weight: bold">{</span>
-
-<span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 0º</span>
-<span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #8f5902; font-style: italic">// Esperamos 1 segundo</span>
-<span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">1000</span><span style="color: #000000; font-weight: bold">);</span>
-
-<span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 90º</span>
-<span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">90</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #8f5902; font-style: italic">// Esperamos 1 segundo</span>
-<span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">1000</span><span style="color: #000000; font-weight: bold">);</span>
-
-<span style="color: #000000">CALCULAR_DISTANCIA_IZQUIERDA</span><span style="color: #000000; font-weight: bold">();</span>
-
-<span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 180º</span>
-<span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">180</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #8f5902; font-style: italic">// Esperamos 1 segundo</span>
-<span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">1000</span><span style="color: #000000; font-weight: bold">);</span>
-
-<span style="color: #000000">CALCULAR_DISTANCIA_DERECHA</span><span style="color: #000000; font-weight: bold">();</span>
-
-<span style="color: #8f5902; font-style: italic">// Desplazamos a la posición 0º</span>
-<span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">write</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">90</span><span style="color: #000000; font-weight: bold">);</span>
-
-<span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">500</span><span style="color: #000000; font-weight: bold">);</span>
-
-<span style="color: #000000; font-weight: bold">}</span>
-
-
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">SENSOR_ULTRASONICO</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// En esta parte del código lo que vamos a hacer es calcular la distancia gracias al sensor ultrasónico.</span>
-  <span style="color: #8f5902; font-style: italic">// Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</span>
-  <span style="color: #8f5902; font-style: italic">// Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</span>
-    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
-
-    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">TIEMPO</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">pulseIn</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">DISTANCIA</span><span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #204a87; font-weight: bold">int</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0.017</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;El valor de la distancia es &quot;</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
-
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">CALCULAR_DISTANCIA_DERECHA</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// En esta parte del código lo que vamos a hacer es calcular la distancia a la derecha cuando el servo gire a la derecha gracias al sensor ultrasónico.</span>
-  <span style="color: #8f5902; font-style: italic">// Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</span>
-  <span style="color: #8f5902; font-style: italic">// Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</span>
-    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
-
-    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">TIEMPO</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">pulseIn</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">DISTANCIA_DERECHA</span><span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #204a87; font-weight: bold">int</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0.017</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;El valor de la distancia a la derecha es &quot;</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA_DERECHA</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
-
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">CALCULAR_DISTANCIA_IZQUIERDA</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// En esta parte del código lo que vamos a hacer es calcular la distancia a la izquierda cuando el servo gire a la izquierda gracias al sensor ultrasónico.</span>
-  <span style="color: #8f5902; font-style: italic">// Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</span>
-  <span style="color: #8f5902; font-style: italic">// Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</span>
-    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
-
-    <span style="color: #000000">digitalWrite</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delayMicroseconds</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">10</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">TIEMPO</span><span style="color: #ce5c00; font-weight: bold">=</span><span style="color: #000000">pulseIn</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">DISTANCIA_IZQUIERDA</span><span style="color: #ce5c00; font-weight: bold">=</span> <span style="color: #204a87; font-weight: bold">int</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">0.017</span><span style="color: #ce5c00; font-weight: bold">*</span><span style="color: #000000">TIEMPO</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #4e9a06">&quot;El valor de la distancia a la izquierda es &quot;</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">println</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">DISTANCIA_IZQUIERDA</span><span style="color: #000000; font-weight: bold">);</span>
-    <span style="color: #000000">delay</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">200</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
-
-
-<span style="color: #8f5902; font-style: italic">// Función que hace que se activen los pines de los motores hacia delante y el coche avance hacia delante.</span>
+      <font color="#000000">}</font>
 
 
 
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_DELANTE</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
-  <span style="color: #8f5902; font-style: italic">// El pin de delante está en HIGH mientras que el de detrás está en LOW, por lo que las dos ruedas de la izquierda girarán hacia delante.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
-  <span style="color: #8f5902; font-style: italic">// El pin de delante está en HIGH mientras que el de detrás está en LOW, por lo que las dos ruedas de la derecha girarán hacia delante.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
+      <font color="#434f54">&#47;&#47; Código que se repite en bucle</font>
+      <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#000000">SENSOR_ULTRASONICO</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Si la distancia es mayor que los centímetros avanzará</font>
+       &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">DISTANCIA</font><font color="#434f54">&gt;</font><font color="#000000">CENTIMETROS</font><font color="#000000">)</font>
+       &nbsp;<font color="#000000">{</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">ROBOT_DELANTE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#000000">}</font>
+       &nbsp;<font color="#5e6d03">else</font>
+       &nbsp;<font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Si los centímetros son mayores que la distancia el coche se parará, retrocederá un poco, </font>
+       &nbsp;<font color="#434f54">&#47;&#47; girará el Servo hacia los dos lados y calculará la distancia que hay respecto al obstáculo</font>
+       &nbsp;<font color="#434f54">&#47;&#47; más cercano en ambas direcciones y girará y avanzará hacia el lado donde tenga mayor distancia</font>
+       &nbsp;<font color="#434f54">&#47;&#47; respecto al objeto más cercano detectado.</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">ROBOT_ATRAS</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">250</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">ROBOT_QUIETO</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+
+       &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">GIRAR_SERVO</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;
+
+       &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">DISTANCIA_DERECHA</font> <font color="#434f54">&gt;</font> <font color="#000000">DISTANCIA_IZQUIERDA</font><font color="#000000">)</font> <font color="#000000">{</font>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">ROBOT_DERECHA</font> <font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">ROBOT_IZQUIERDA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+
+       &nbsp;<font color="#000000">}</font>
+      <font color="#000000">}</font>
+
+      <font color="#00979c">void</font> <font color="#000000">GIRAR_SERVO</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+
+      <font color="#434f54">&#47;&#47; Desplazamos a la posición 0º</font>
+      <font color="#000000">servoMotor</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#434f54">&#47;&#47; Esperamos 1 segundo</font>
+      <font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font>
+
+      <font color="#434f54">&#47;&#47; Desplazamos a la posición 90º</font>
+      <font color="#000000">servoMotor</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">90</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#434f54">&#47;&#47; Esperamos 1 segundo</font>
+      <font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font>
+
+      <font color="#000000">CALCULAR_DISTANCIA_IZQUIERDA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+
+      <font color="#434f54">&#47;&#47; Desplazamos a la posición 180º</font>
+      <font color="#000000">servoMotor</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">180</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#434f54">&#47;&#47; Esperamos 1 segundo</font>
+      <font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font>
+
+      <font color="#000000">CALCULAR_DISTANCIA_DERECHA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+
+      <font color="#434f54">&#47;&#47; Desplazamos a la posición 90º</font>
+      <font color="#000000">servoMotor</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">90</font><font color="#000000">)</font><font color="#000000">;</font>
+
+      <font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">500</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;
+      <font color="#000000">}</font>
+
+
+      <font color="#00979c">void</font> <font color="#000000">SENSOR_ULTRASONICO</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; En esta parte del código lo que vamos a hacer es calcular la distancia gracias al sensor ultrasónico.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">TIEMPO</font><font color="#434f54">=</font><font color="#d35400">pulseIn</font><font color="#000000">(</font><font color="#000000">PIN_ECHO</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">DISTANCIA</font><font color="#434f54">=</font> <font color="#00979c">int</font><font color="#000000">(</font><font color="#000000">0.017</font><font color="#434f54">*</font><font color="#000000">TIEMPO</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;El valor de la distancia es &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">DISTANCIA</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">200</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
+
+      <font color="#00979c">void</font> <font color="#000000">CALCULAR_DISTANCIA_DERECHA</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; En esta parte del código lo que vamos a hacer es calcular la distancia a la derecha cuando el servo gire a la derecha gracias al sensor ultrasónico.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">TIEMPO</font><font color="#434f54">=</font><font color="#d35400">pulseIn</font><font color="#000000">(</font><font color="#000000">PIN_ECHO</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">DISTANCIA_DERECHA</font><font color="#434f54">=</font> <font color="#00979c">int</font><font color="#000000">(</font><font color="#000000">0.017</font><font color="#434f54">*</font><font color="#000000">TIEMPO</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;El valor de la distancia a la derecha es &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">DISTANCIA_DERECHA</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">200</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
+
+      <font color="#00979c">void</font> <font color="#000000">CALCULAR_DISTANCIA_IZQUIERDA</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; En esta parte del código lo que vamos a hacer es calcular la distancia a la izquierda cuando el servo gire a la izquierda gracias al sensor ultrasónico.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Lo que hará será enviar un sonido y calcular el tiempo que tarda en volver.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Gracias a la fórmula de abajo podrá calcular la distancia en centímetros.</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font><font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">PIN_TRIGGER</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delayMicroseconds</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">TIEMPO</font><font color="#434f54">=</font><font color="#d35400">pulseIn</font><font color="#000000">(</font><font color="#000000">PIN_ECHO</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#000000">DISTANCIA_IZQUIERDA</font><font color="#434f54">=</font> <font color="#00979c">int</font><font color="#000000">(</font><font color="#000000">0.017</font><font color="#434f54">*</font><font color="#000000">TIEMPO</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#005c5f">&#34;El valor de la distancia a la izquierda es &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">DISTANCIA_IZQUIERDA</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">200</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
+
+
+      <font color="#434f54">&#47;&#47; Función que hace que se activen los pines de los motores hacia delante y el coche avance hacia delante.</font>
 
 
 
-<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es que se activen los pines del coche hacia detrás y el coche avance hacia atrás. </span>
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_ATRAS</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
-  <span style="color: #8f5902; font-style: italic">// El pin de detrás está en HIGH mientras que el de delante está en LOW, por lo que las dos ruedas de la izquierda girarán hacia atrás.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
-  <span style="color: #8f5902; font-style: italic">// El pin de detrás está en HIGH mientras que el de delante está en LOW, por lo que las dos ruedas de la derecha girarán hacia atrás.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
+      <font color="#00979c">void</font> <font color="#000000">ROBOT_DELANTE</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado izquierdo.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; El pin de delante está en HIGH mientras que el de detrás está en LOW, por lo que las dos ruedas de la izquierda girarán hacia delante.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado derecho.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; El pin de delante está en HIGH mientras que el de detrás está en LOW, por lo que las dos ruedas de la derecha girarán hacia delante.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
 
 
 
-<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es hacer que únicamente giren las ruedas de la izquierda hacia delante para que así se produzca un giro hacia la derecha.</span>
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_DERECHA</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
-  <span style="color: #8f5902; font-style: italic">// El pin de las ruedas de la izquierda hacia delante está en HIGH, por lo que las ruedas girarán hacia delante y provocarán un giro hacia la derecha.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
-  <span style="color: #8f5902; font-style: italic">// Los dos pines están en LOW, por lo que ninguna de las ruedas se quedarán quietas. </span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
+      <font color="#434f54">&#47;&#47; Esta función lo que hará es que se activen los pines del coche hacia detrás y el coche avance hacia atrás. </font>
+      <font color="#00979c">void</font> <font color="#000000">ROBOT_ATRAS</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado izquierdo.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; El pin de detrás está en HIGH mientras que el de delante está en LOW, por lo que las dos ruedas de la izquierda girarán hacia atrás.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado derecho.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; El pin de detrás está en HIGH mientras que el de delante está en LOW, por lo que las dos ruedas de la derecha girarán hacia atrás.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
 
 
 
-<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es hacer que únicamente giren las ruedas de la derecha hacia delante para que así se produzca un giro hacia la izquierda.</span>
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_IZQUIERDA</span> <span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
-  <span style="color: #8f5902; font-style: italic">// Los dos pines están en LOW, por lo que ninguna de las ruedas se quedarán quietas. </span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
-  <span style="color: #8f5902; font-style: italic">// El pin de las ruedas de la derecha hacia delante está en HIGH, por lo que las ruedas girarán hacia delante y provocarán un giro hacia la izquierda.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">HIGH</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
+      <font color="#434f54">&#47;&#47; Esta función lo que hará es hacer que únicamente giren las ruedas de la izquierda hacia delante para que así se produzca un giro hacia la derecha.</font>
+      <font color="#00979c">void</font> <font color="#000000">ROBOT_DERECHA</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado izquierdo.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; El pin de las ruedas de la izquierda hacia delante está en HIGH, por lo que las ruedas girarán hacia delante y provocarán un giro hacia la derecha.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado derecho.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Los dos pines están en LOW, por lo que ninguna de las ruedas se quedarán quietas. </font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
 
 
 
-<span style="color: #8f5902; font-style: italic">// Esta función lo que hará es hacer que todas las ruedas se queden quietas poniendo todos los pines en LOW.</span>
-<span style="color: #204a87; font-weight: bold">void</span> <span style="color: #000000">ROBOT_QUIETO</span><span style="color: #000000; font-weight: bold">()</span>
-<span style="color: #000000; font-weight: bold">{</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado izquierdo.</span>
-  <span style="color: #8f5902; font-style: italic">// Se paran los motores del lado izquierdo.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_IZQUIERDA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #8f5902; font-style: italic">// Motores del lado derecho.</span>
-  <span style="color: #8f5902; font-style: italic">// Se paran los motores del lado derecho.</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DELANTE_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-  <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
-<span style="color: #000000; font-weight: bold">}</span>
-</pre></div>
+      <font color="#434f54">&#47;&#47; Esta función lo que hará es hacer que únicamente giren las ruedas de la derecha hacia delante para que así se produzca un giro hacia la izquierda.</font>
+      <font color="#00979c">void</font> <font color="#000000">ROBOT_IZQUIERDA</font> <font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado izquierdo.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Los dos pines están en LOW, por lo que ninguna de las ruedas se quedarán quietas. </font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado derecho.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; El pin de las ruedas de la derecha hacia delante está en HIGH, por lo que las ruedas girarán hacia delante y provocarán un giro hacia la izquierda.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
 
+
+
+      <font color="#434f54">&#47;&#47; Esta función lo que hará es hacer que todas las ruedas se queden quietas poniendo todos los pines en LOW.</font>
+      <font color="#00979c">void</font> <font color="#000000">ROBOT_QUIETO</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado izquierdo.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Se paran los motores del lado izquierdo.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_IZQUIERDA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Motores del lado derecho.</font>
+       &nbsp;<font color="#434f54">&#47;&#47; Se paran los motores del lado derecho.</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DELANTE_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+       &nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">MOTOR_DETRAS_DERECHA</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
+
+      </pre>
 
     </div>
 
