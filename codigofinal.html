@@ -14,6 +14,7 @@
       <p class="textomontaje">Este es el código final que hemos usado en nuestro coche.</p>
       <p class="textomontaje">Lo que hace el coche con este código es avanzar y cuando detecta un objeto a unos 50 centímetros se detiene, retrocede un poco y el servo gira hacia la izquierda y calcula la distancia respecto al obstáculo más cercano en esa dirección. Repite el mismo proceso con la parte derecha. Una vez ya ha calculado la distancia en ambas direcciones, el robot girará hacia el lado donde tenga el obstáculo de cualquiera de las direcciones más lejos y después avanzará recto hasta que se encuente un objeto a 50 centímetros y repetirá todo el proceso anterior.</p>
 
+
       <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #8f5902; font-style: italic">// Incluímos la librería para poder controlar el servo</span>
       <span style="color: #8f5902; font-style: italic">#include &lt;Servo.h&gt;</span>
 
@@ -56,7 +57,7 @@
         <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_TRIGGER</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">OUTPUT</span><span style="color: #000000; font-weight: bold">);</span>
         <span style="color: #000000">pinMode</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_ECHO</span><span style="color: #000000; font-weight: bold">,</span><span style="color: #000000">INPUT</span><span style="color: #000000; font-weight: bold">);</span>
         <span style="color: #000000">Serial</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">begin</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #0000cf; font-weight: bold">9600</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// Se inicia el puerto de comunicaciones</span>
-        <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">attach</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_SERVO</span><span style="color: #000000; font-weight: bold">);</span>
+        <span style="color: #000000">servoMotor</span><span style="color: #000000; font-weight: bold">.</span><span style="color: #000000">attach</span><span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">PIN_SERVO</span><span style="color: #000000; font-weight: bold">);</span> <span style="color: #8f5902; font-style: italic">// Comprueba que el pin del Servo (pin 3) está bien conectado</span>
 
       <span style="color: #000000; font-weight: bold">}</span>
 
@@ -253,6 +254,8 @@
         <span style="color: #000000">digitalWrite</span> <span style="color: #000000; font-weight: bold">(</span><span style="color: #000000">MOTOR_DETRAS_DERECHA</span><span style="color: #000000; font-weight: bold">,</span> <span style="color: #000000">LOW</span><span style="color: #000000; font-weight: bold">);</span>
       <span style="color: #000000; font-weight: bold">}</span>
       </pre></div>
+
+
 
     </div>
 
